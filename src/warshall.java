@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 /**
  * Created by Giampiero Vanzzini on 11/13/2016.
+ *
  */
 public class warshall {
 
@@ -29,6 +30,7 @@ public class warshall {
             }
             System.out.println();
         }
+        System.out.println();
         long startTime = System.nanoTime();
         int[][] TransitiveClosure = Warshalls(AdjacencyMatrix, count);
         long totalTime = System.nanoTime() - startTime;
@@ -45,17 +47,15 @@ public class warshall {
     }
 
     private static int[][] Warshalls(int[][] adjacencyMatrix, int count) {
-        int [][] R = adjacencyMatrix;
         for(int k = 0; k < count; k++){
             for(int i = 0; i < count; i++){
                 for(int j = 0; j < count; j++){
-                    if(R[i][k] == 1 && R[k][j] == 1){
-                        R[i][j] = 1;
+                    if(adjacencyMatrix[i][k] == 1 && adjacencyMatrix[k][j] == 1){
+                        adjacencyMatrix[i][j] = 1;
                     }
-
                 }
             }
         }
-        return R;
+        return adjacencyMatrix;
     }
 }
