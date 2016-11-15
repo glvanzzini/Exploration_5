@@ -69,10 +69,13 @@ public class warshall {
     // Output - returns the modified matrix as a transitive closure
     private static int[][] Warshalls(int[][] adjacencyMatrix, int count) {
         for(int k = 0; k < count; k++)
-            for(int i = 0; i < count; i++)
-                for(int j = 0; j < count; j++)
-                    if(adjacencyMatrix[i][k] == 1 && adjacencyMatrix[k][j] == 1)
-                        adjacencyMatrix[i][j] = 1;
+            for (int i = 0; i < count; i++)
+                for (int j = 0; j < count; j++)
+                    if (adjacencyMatrix[i][j] != 1) {
+                        if (adjacencyMatrix[i][k] == 1 && adjacencyMatrix[k][j] == 1)
+                            adjacencyMatrix[i][j] = 1;
+
+                    }
 
         return adjacencyMatrix;
     }
